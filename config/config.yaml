@@ -1,0 +1,60 @@
+# Colony Timelapse Configuration File
+
+# Paths
+paths:
+  # Source image directory (will be prompted if not set)
+  source_base: "H:\\DCIM"
+  
+  # Output directory for processed images
+  processed_images: "D:\\colony_timelapse\\processed_images"
+  
+  # YOLO model weights (local copy)
+  yolo_weights: "models/yolo_weights.pt"
+  
+  # Output directory for results
+  results_output: "D:\\colony_timelapse\\results"
+  
+  # Output directory for figures
+  figures_output: "D:\\colony_timelapse\\figs"
+
+# Image processing settings
+image_processing:
+  # Target size for resized images
+  target_size: 224
+  
+  # Image format for output
+  output_format: "JPG"
+  
+  # Quality for JPG compression (1-100)
+  jpg_quality: 85
+
+# YOLO settings
+yolo:
+  # Confidence threshold for predictions
+  confidence_threshold: 0.1
+  
+  # Device to use ('cpu', 'cuda', or 'auto')
+  device: "auto"
+  
+  # Batch size for inference
+  batch_size: 16
+
+# Output settings
+output:
+  # Include raw prediction probabilities in output
+  include_probabilities: true
+  
+  # Number of top predictions to save
+  top_predictions: 5
+  
+  # Save detailed logs
+  verbose_logging: true
+  
+  # Date format for timestamps
+  date_format: "%Y-%m-%d %H:%M:%S"
+
+# File naming
+naming:
+  # Template for processed image names
+  # Available variables: {parent_folder}, {original_name}, {counter:04d}
+  processed_name_template: "{parent_folder}_{original_name}" 
