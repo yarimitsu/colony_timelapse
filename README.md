@@ -7,8 +7,7 @@ This project processes time lapse camera images, resizes them, and runs YOLO11 i
 - **Batch Image Processing**: Resize images to 224x224px with EXIF preservation
 - **YOLO11 Classification**: Run inference using trained weights  
 - **Resume Functionality**: Skip already processed images for efficiency
-- **Multi-Year Support**: Process and visualize data across multiple years
-- **Automated Visualization**: Generate attendance pattern plots
+- **Automated Visualization**: Generate attendance pattern plots across multiple year
 - **Robust Pipeline**: End-to-end processing from raw images to final plots
 
 ## Project Structure
@@ -33,12 +32,12 @@ colony_timelapse/
 
 ## Quick Start
 
-**📋 Requirements:**
+**Requirements:**
 - Python 3.8+ (download from [python.org](https://www.python.org/downloads/))
 - At least 20GB free disk space for processed images
 - CUDA GPU recommended for faster processing
 
-**🚀 Installation:**
+**Installation:**
 1. Clone or download this repository
 2. Install dependencies:
 ```bash
@@ -49,7 +48,7 @@ pip install -r requirements.txt
 
 ### Process a Year of Data
 ```bash
-python scripts/process_year.py --year YourDataset2024 --source "path/to/your/images"
+python scripts/process_year.py --year YourDatasetYYYY --source "path/to/your/images"
 ```
 
 ### Generate Attendance Plot
@@ -70,8 +69,6 @@ Key settings in `config/config.yaml`:
 The pipeline automatically resumes interrupted processing:
 - **Image Processing**: Skips already resized images (newly implemented)
 - **Classification**: Loads existing results and processes only new images  
-- **Efficiency**: Perfect for large datasets (50,000+ images)
-- **Logging**: Shows exactly how many images are skipped vs. newly processed
 
 ## Output
 
@@ -83,7 +80,7 @@ The pipeline produces:
 
 ## Model Information
 
-**✅ Pre-trained Model Included!**
+**Pre-trained Model**
 - YOLO11 classification model: `models/yolo_weights.pt`
 - Classes: `Zero`, `Few_Half` (<50%), `Many_All` (>50%)
 - Input: 224x224 pixel images
@@ -91,7 +88,7 @@ The pipeline produces:
 
 ### Model Training Details
 
-The included YOLO11 weights were trained specifically on **Gull Island Common Murre colony data**:
+The included YOLO11 weights were trained specifically on Common Murre colony data from the Marker Camera on Gull Island:
 
 - **Training Dataset**: 6,054 hand-labeled images from timelapse cameras
 - **Class Distribution**:
@@ -104,26 +101,9 @@ The included YOLO11 weights were trained specifically on **Gull Island Common Mu
   - `Many_All` Class: Precision 99.59%, Recall 99.59%, F1-Score 99.59%
   - `Zero` Class: Precision 99.76%, Recall 100.00%, F1-Score 99.88%
 
-The model was trained using Timelapse software for image annotation and achieves excellent performance across all attendance categories.
-
 ## File Patterns
 
 Automatically detects and processes:
-- **MLB_*.JPG** (older camera format)
-- **RCNX*.JPG** (newer camera format)  
+- **MLB_*.JPG** or **RCNX*.JPG** 
 - Supports numbered camera folders (e.g., `100RECNX`, `101RECNX`, etc.)
 - Automatically ignores backup and system directories
-
-## Example Workflow
-
-1. **Process your data:**
-   ```bash
-   python scripts/process_year.py --year MyColony2024 --source "/path/to/camera/images"
-   ```
-
-2. **Generate updated plot:**
-   ```bash
-   python scripts/make_plot.py
-   ```
-
-3. **Results:** Check `figs/colony_attendance.png` for attendance patterns across all years 
