@@ -90,7 +90,8 @@ def main():
         + scale_fill_manual(values=colors, name='Image Classification')
         + labs(x='Date', 
               y='',  # Remove y-axis label
-              title='Gull Island Common Murre Attendance')
+              title='Gull Island Common Murre Attendance',
+              subtitle='preliminary classification results from Marker Camera')
         + theme_bw()
         + theme(
             axis_title_y=element_blank(),
@@ -98,7 +99,7 @@ def main():
             axis_ticks_y=element_blank(),
             axis_title_x=element_text(margin={'t': 10}),  # Add margin to x-axis title
             legend_position='bottom',
-            plot_title=element_text(hjust=0.5),
+            #plot_title=element_text(hjust=0.5),
             strip_background=element_blank(),
             strip_text_y=element_text(angle=0),  # Make year labels horizontal
             panel_grid_major_y=element_blank(),
